@@ -86,14 +86,20 @@ const Hero = () => {
           )}
         </motion.div>
 
-        <motion.button
+        <motion.a
+          href="#contact"
           variants={buttonVariants}
           whileHover="whileHover"
           whileTap="whileTap"
           style={styles.hireButton}
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
         >
           Hire Me
-        </motion.button>
+        </motion.a>
       </div>
 
       <motion.div

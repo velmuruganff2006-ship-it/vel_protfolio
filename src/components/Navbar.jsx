@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isActive, setIsActive] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'];
+  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,15 +61,21 @@ const Navbar = () => {
       </motion.div>
 
       {/* Hire Me Button */}
-      <motion.button
+      <motion.a
+        href="#contact"
         variants={buttonVariants}
         whileHover="whileHover"
         whileTap="whileTap"
         style={styles.hireButton}
         className="hire-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          const el = document.getElementById('contact');
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }}
       >
         Hire Me
-      </motion.button>
+      </motion.a>
 
       {/* Mobile Menu Button */}
       <motion.button
