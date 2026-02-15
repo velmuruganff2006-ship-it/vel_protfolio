@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { navLinkVariants, buttonVariants } from '../animations/variants';
 
@@ -59,6 +60,29 @@ const Navbar = () => {
           </motion.a>
         ))}
       </motion.div>
+
+      {/* Login Button */}
+      <Link to="/login" style={{ marginRight: 12, textDecoration: 'none' }}>
+        <motion.div
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.03 }}
+          style={{
+            display: 'inline-block'
+          }}
+        >
+          <button style={{
+            padding: '10px 18px',
+            borderRadius: 20,
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.08)',
+            color: '#e0e0e0',
+            cursor: 'pointer'
+          }}>
+            Login
+          </button>
+        </motion.div>
+      </Link>
 
       {/* Hire Me Button */}
       <motion.a
