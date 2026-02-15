@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ParticleBackground from './ParticleBackground'
 
 function Login(){
   const navigate = useNavigate()
@@ -9,7 +10,7 @@ function Login(){
   const handleSubmit = (e) => {
     e.preventDefault()
     // simple client-side check; replace with real auth as needed
-    if(password === 'admin' || password === 'password'){
+    if(password === 'cherry' || password === 'password'){
       localStorage.setItem('admin','true')
       navigate('/admin')
     } else {
@@ -18,9 +19,11 @@ function Login(){
   }
 
   return (
-    <div style={{padding:'120px 10%',minHeight:'100vh'}}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} style={{maxWidth:400,marginTop:20}}>
+    <>
+      <ParticleBackground />
+      <div style={{padding:'120px 10%',minHeight:'100vh', position: 'relative', zIndex: 10}}>
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit} style={{maxWidth:400,marginTop:20}}>
         <label style={{display:'block',marginBottom:8}}>Password</label>
         <input
           type="password"
