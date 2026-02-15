@@ -7,6 +7,7 @@ import Skills from "./components/Skills"
 import Experience from "./pages/Experience"
 import ParticleBackground from "./components/ParticleBackground"
 import './styles/globals.css'
+import './styles/responsive.css'
 
 function App() {
   return (
