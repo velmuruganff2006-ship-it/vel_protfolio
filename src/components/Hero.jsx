@@ -137,16 +137,17 @@ const Hero = () => {
   }, [subText, isDeleting, textIndex]);
 
   return (
-    <section id="home" style={styles.hero} >
-      <div style={styles.heroContent}>
+    <section id="home" style={styles.hero} className="hero">
+      <div style={styles.heroContent} className="hero-content">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           style={styles.greeting}
+          className="greeting"
         >
           <h1>
-            <span style={{ fontSize: '70px' }} className="gradient-text">VELMURUGAN A</span>
+            <span className="gradient-text hero-name">VELMURUGAN A</span>
           </h1>
         </motion.div>
 
@@ -155,15 +156,16 @@ const Hero = () => {
           animate="visible"
           variants={containerVariants}
           style={styles.titleContainer}
+          className="title-container"
         >
-          <h2 style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <h2 style={{ display: 'flex', alignItems: 'center', gap: '10px' }} className="hero-subtitle">
             <span>{text}</span>
-            <span style={{ color: '#ff2e63', minWidth: '300px' }}>
+            <span style={{ color: 'var(--accent-primary)', minWidth: '300px' }} className="typewriter-wrapper">
               {subText}
               <motion.span
                 animate={{ opacity: [0, 1, 0] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                style={{ marginLeft: '2px', borderRight: '3px solid #ff2e63' }}
+                style={{ marginLeft: '2px', borderRight: '3px solid var(--accent-primary)' }}
               />
             </span>
           </h2>
@@ -174,6 +176,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           style={styles.description}
+          className="description"
         >
           {description}
         </motion.p>
@@ -183,6 +186,7 @@ const Hero = () => {
           animate="visible"
           variants={containerVariants}
           style={styles.socialIcons}
+          className="social-icons"
         >
           {socialLinks.map((icon) => (
             <MagneticButton key={icon.name}>
@@ -213,6 +217,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={styles.hireButton}
+            className="hire-button"
             onClick={(e) => {
               e.preventDefault();
               const el = document.getElementById('contact');
@@ -297,7 +302,7 @@ const styles = {
   description: {
     fontSize: '16px',
     lineHeight: '1.8',
-    color: '#b0b0b0',
+    color: 'var(--text-secondary)',
     marginBottom: '40px',
     maxWidth: '500px',
   },

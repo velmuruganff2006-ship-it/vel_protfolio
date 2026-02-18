@@ -44,7 +44,7 @@ function Contact() {
       >
         <h2 style={styles.title}>Get In Touch</h2>
 
-        <div style={styles.content}>
+        <div style={styles.content} className="content">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -63,6 +63,7 @@ function Contact() {
                   key={i}
                   variants={itemVariants}
                   style={styles.method}
+                  className="method"
                 >
                   <span style={styles.methodIcon}>{method.icon}</span>
                   <div>
@@ -81,10 +82,10 @@ function Contact() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             style={styles.form}
-            className="glassmorphism"
+            className="glassmorphism form"
           >
             <motion.div variants={itemVariants} style={styles.formGroup}>
-              <label style={styles.label}>Name</label>
+              <label style={styles.label} className="label">Name</label>
               <input
                 type="text"
                 name="name"
@@ -92,12 +93,13 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Your Name"
                 style={styles.input}
+                className="input"
                 required
               />
             </motion.div>
 
             <motion.div variants={itemVariants} style={styles.formGroup}>
-              <label style={styles.label}>Email</label>
+              <label style={styles.label} className="label">Email</label>
               <input
                 type="email"
                 name="email"
@@ -105,18 +107,20 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="your@email.com"
                 style={styles.input}
+                className="input"
                 required
               />
             </motion.div>
 
             <motion.div variants={itemVariants} style={styles.formGroup}>
-              <label style={styles.label}>Message</label>
+              <label style={styles.label} className="label">Message</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Your message here..."
                 style={{ ...styles.input, minHeight: '150px', resize: 'none' }}
+                className="input"
                 required
               ></textarea>
             </motion.div>
@@ -127,6 +131,7 @@ function Contact() {
               whileHover="whileHover"
               whileTap="whileTap"
               style={styles.submitButton}
+              className="submit-button"
             >
               Send Message
             </motion.button>
@@ -183,7 +188,7 @@ const styles = {
   },
   description: {
     fontSize: '16px',
-    color: '#b0b0b0',
+    color: 'var(--text-secondary)',
     lineHeight: '1.6',
   },
   methodsList: {
@@ -201,7 +206,7 @@ const styles = {
   },
   methodLabel: {
     fontSize: '14px',
-    color: '#888',
+    color: 'var(--text-secondary)',
     margin: '0 0 5px 0',
   },
   methodValue: {
@@ -229,10 +234,10 @@ const styles = {
   },
   input: {
     padding: '12px 15px',
-    background: 'rgba(255, 255, 255, 0.05)',
-    border: '1px solid rgba(255, 46, 99, 0.3)',
+    background: 'var(--card-bg)',
+    border: '1px solid var(--nav-border)',
     borderRadius: '10px',
-    color: '#e0e0e0',
+    color: 'var(--text-primary)',
     fontSize: '14px',
     fontFamily: 'inherit',
     transition: 'all 0.3s ease',

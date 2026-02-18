@@ -151,7 +151,7 @@ const styles = {
   projectDescription: {
     fontSize: "14px",
     lineHeight: "1.6",
-    color: "#b0b0b0",
+    color: "var(--text-secondary)",
     marginBottom: "20px",
     flex: 1,
   },

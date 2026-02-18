@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { navLinkVariants, buttonVariants } from '../animations/variants';
 import MagneticButton from './MagneticButton';
+import ThemeToggle from './ThemeToggle';
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
   const [isActive, setIsActive] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const Navbar = () => {
         transition={{ staggerChildren: 0.1 }}
         style={styles.logo}
       >
-        <span style={{ ...styles.logoText, fontSize: '30px', fontWeight: 'bold' }}>
+        <span style={{ ...styles.logoText, fontWeight: 'bold' }} className="logo-text">
           {Array.from("VELMURUGAN A").map((char, index) => (
             <motion.span
               key={index}
@@ -59,12 +60,12 @@ const Navbar = () => {
               href={`#${item.toLowerCase()}`}
               custom={i}
               variants={navLinkVariants}
-              whileHover={{ scale: 1.1, color: '#ff2e63' }}
+              whileHover={{ scale: 1.1, color: 'var(--accent-primary)' }}
               onClick={() => setIsActive(item.toLowerCase())}
               style={{
                 ...styles.navLink,
                 color:
-                  isActive === item.toLowerCase() ? '#ff2e63' : '#e0e0e0',
+                  isActive === item.toLowerCase() ? 'var(--accent-primary)' : 'var(--text-primary)',
                 textDecoration:
                   isActive === item.toLowerCase() ? 'underline' : 'none',
                 display: 'inline-block',
@@ -77,6 +78,8 @@ const Navbar = () => {
       </motion.div>
 
 
+
+      <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
       {/* Hire Me Button */}
       <motion.a
@@ -144,9 +147,9 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '20px 50px',
-    background: 'rgba(10, 14, 39, 0.8)',
+    background: 'var(--nav-bg)',
     backdropFilter: 'blur(10px)',
-    borderBottom: '1px solid rgba(255, 46, 99, 0.2)',
+    borderBottom: '1px solid var(--nav-border)',
     zIndex: 1000,
     height: '80px',
   },
@@ -156,7 +159,7 @@ const styles = {
     cursor: 'pointer',
   },
   logoText: {
-    color: '#e0e0e0',
+    color: 'var(--text-primary)',
   },
   navLinks: {
     display: 'flex',
@@ -173,7 +176,7 @@ const styles = {
   },
   hireButton: {
     padding: '12px 30px',
-    background: 'linear-gradient(135deg, #ff2e63 0%, #ff7b54 100%)',
+    background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%)',
     color: 'white',
     border: 'none',
     borderRadius: '30px',
@@ -197,7 +200,7 @@ const styles = {
     top: '80px',
     right: 0,
     width: '100%',
-    background: 'rgba(10, 14, 39, 0.95)',
+    background: 'var(--nav-bg)',
     display: 'flex',
     flexDirection: 'column',
     padding: '20px',
@@ -206,7 +209,7 @@ const styles = {
   },
   mobileNavLink: {
     textDecoration: 'none',
-    color: '#e0e0e0',
+    color: 'var(--text-primary)',
     fontSize: '16px',
     padding: '10px',
     borderRadius: '8px',

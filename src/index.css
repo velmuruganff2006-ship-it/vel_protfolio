@@ -1,45 +1,43 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-body{
-  background: linear-gradient(135deg,#0f172a,#1e293b);
-  color:white;
+/* body styles moved to globals.css */
+
+section {
+  padding: 80px 10%;
 }
 
-section{
-  padding:80px 10%;
+h1,
+h2 {
+  color: #38bdf8;
 }
 
-h1,h2{
-  color:#38bdf8;
+a {
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+  font-weight: 500;
 }
 
-a{
-  text-decoration:none;
-  color:white;
-  margin-left:20px;
-  font-weight:500;
+a:hover {
+  color: #38bdf8;
 }
 
-a:hover{
-  color:#38bdf8;
+button {
+  padding: 12px 25px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-button{
-  padding:12px 25px;
-  background:#38bdf8;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-button:hover{
-  background:white;
-  color:black;
+button:hover {
+  background: white;
+  color: black;
 }

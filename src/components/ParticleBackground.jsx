@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
-const ParticleBackground = () => {
+const ParticleBackground = ({ theme }) => {
     const [init, setInit] = useState(false);
 
     useEffect(() => {
@@ -23,6 +23,7 @@ const ParticleBackground = () => {
             {init && (
                 <Particles
                     id="tsparticles"
+                    key={theme}
                     particlesLoaded={particlesLoaded}
                     options={{
                         background: {
@@ -39,25 +40,27 @@ const ParticleBackground = () => {
                                 },
                                 onHover: {
                                     enable: true,
-                                    mode: "repulse",
+                                    mode: "grab",
                                 },
                             },
                             modes: {
+                                grab: {
+                                    distance: 200,
+                                    links: {
+                                        opacity: 1,
+                                    },
+                                },
                                 push: {
                                     quantity: 4,
-                                },
-                                repulse: {
-                                    distance: 200,
-                                    duration: 0.4,
                                 },
                             },
                         },
                         particles: {
                             color: {
-                                value: ["#e91e63", "#00bcd4"], // Pink and Cyan
+                                value: theme === 'light' ? ["#ff2e63", "#3498db"] : ["#e91e63", "#00bcd4"],
                             },
                             links: {
-                                color: "#ffffff",
+                                color: theme === 'light' ? "#c3cfe2" : "#ffffff",
                                 distance: 160,
                                 enable: true,
                                 opacity: 0.5,

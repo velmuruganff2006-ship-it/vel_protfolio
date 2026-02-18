@@ -54,6 +54,10 @@
     padding: 60px 20px !important;
   }
 
+  .hero-name {
+    font-size: 40px !important;
+  }
+
   h1 {
     font-size: 32px !important;
   }
@@ -138,6 +142,21 @@
   .hire-button {
     padding: 12px 30px !important;
     font-size: 14px !important;
+  }
+
+  .logo-text {
+    font-size: 18px !important;
+  }
+
+  .hero-subtitle {
+    flex-direction: column;
+    align-items: center !important;
+    font-size: 24px !important;
+  }
+
+  .typewriter-wrapper {
+    min-width: auto !important;
+    text-align: center;
   }
 
   .content {

@@ -151,12 +151,12 @@ const styles = {
   profileName: {
     margin: 0,
     fontSize: '22px',
-    color: '#ffffff',
+    color: 'var(--text-primary)',
   },
   profileRole: {
     marginTop: '10px',
     marginBottom: 0,
-    color: '#b0b0b0',
+    color: 'var(--text-secondary)',
   },
   detailsColumn: {
     display: 'flex',
@@ -166,7 +166,7 @@ const styles = {
   textContent: {
     fontSize: '16px',
     lineHeight: '1.8',
-    color: '#b0b0b0',
+    color: 'var(--text-secondary)',
   },
   skillsBox: {
     padding: '30px',

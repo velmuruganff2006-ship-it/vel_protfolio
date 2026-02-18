@@ -50,7 +50,7 @@ const Experience = () => {
               whileHover={{ x: 10 }}
             >
               <div style={styles.timelineMarker}></div>
-              
+
               <div style={styles.expContent}>
                 <h3 style={styles.position}>{exp.position}</h3>
                 <p style={styles.company}>{exp.company}</p>
@@ -69,7 +69,7 @@ const styles = {
   section: {
     minHeight: '100vh',
     padding: '100px 50px',
-    background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%)',
+
     display: 'flex',
     alignItems: 'center',
   },
@@ -101,7 +101,7 @@ const styles = {
     width: '20px',
     height: '20px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #ff2e63 0%, #ff7b54 100%)',
+    background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%)',
     boxShadow: '0 0 20px rgba(255, 46, 99, 0.6)',
   },
   expContent: {
@@ -121,12 +121,12 @@ const styles = {
   },
   duration: {
     fontSize: '13px',
-    color: '#888',
+    color: 'var(--text-secondary)',
   },
   description: {
     fontSize: '14px',
     lineHeight: '1.6',
-    color: '#b0b0b0',
+    color: 'var(--text-secondary)',
     marginTop: '10px',
   },
 };

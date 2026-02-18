@@ -142,12 +142,12 @@ const styles = {
     fontSize: "clamp(30px, 5vw, 48px)",
     marginBottom: "10px",
     textAlign: "center",
-    color: "#f6f7ff",
+    color: "var(--text-primary)",
     lineHeight: 1.1,
   },
   subtitle: {
     textAlign: "center",
-    color: "rgba(230, 236, 255, 0.72)",
+    color: "var(--text-secondary)",
     fontSize: "clamp(14px, 2vw, 17px)",
     marginBottom: "36px",
   },
@@ -163,7 +163,7 @@ const styles = {
     padding: "16px",
     borderRadius: "16px",
     border: "1px solid rgba(255, 255, 255, 0.14)",
-    background: "linear-gradient(120deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))",
+    background: "var(--card-bg)",
   },
   skillNumber: {
     width: "48px",
@@ -176,7 +176,7 @@ const styles = {
     justifyContent: "center",
     fontWeight: "700",
     fontSize: "14px",
-    background: "rgba(8, 10, 26, 0.7)",
+    background: "var(--nav-bg)",
   },
   skillContent: {
     width: "100%",
@@ -191,7 +191,7 @@ const styles = {
   skillName: {
     fontSize: "clamp(16px, 2.6vw, 20px)",
     fontWeight: "700",
-    color: "#ffffff",
+    color: "var(--text-primary)",
     letterSpacing: "0.02em",
   },
   skillLevel: {
