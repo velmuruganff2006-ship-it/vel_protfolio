@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants, buttonVariants } from '../animations/variants';
 
-function Contact(){
+function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,9 +29,9 @@ function Contact(){
   };
 
   const contactMethods = [
-    { icon: '✉️', label: 'Email', value: 'alex@email.com' },
-    { icon: '📱', label: 'Phone', value: '+1 234 567 8900' },
-    { icon: '📍', label: 'Location', value: 'San Francisco, CA' },
+    { icon: '✉️', label: 'Email', value: 'velmuruganff2006@gmail.com' },
+    { icon: '📱', label: 'Phone', value: '+91 9715733850' },
+    { icon: '📍', label: 'Location', value: 'vaiyappamalai' },
   ];
 
   return (
@@ -152,7 +152,6 @@ const styles = {
   section: {
     minHeight: '100vh',
     padding: '100px 50px',
-    background: 'linear-gradient(135deg, #0a0e27 0%, #1a1633 100%)',
     display: 'flex',
     alignItems: 'center',
   },

@@ -1,122 +1,105 @@
-import React from 'react';
-import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
+
+import { useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const ParticleBackground = () => {
-  const particlesInit = async (main) => {
-    await loadFull(main);
-  };
+    const [init, setInit] = useState(false);
 
-  const particlesLoaded = (_container) => {
-    // Optional: do something with the container
-  };
+    useEffect(() => {
+        initParticlesEngine(async (engine) => {
+            await loadSlim(engine);
+        }).then(() => {
+            setInit(true);
+        });
+    }, []);
 
-  return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
-      options={{
-        fullScreen: {
-          enable: true,
-          zIndex: 0,
-        },
-        background: {
-          color: {
-            value: '#0a0e27',
-          },
-        },
-        fpsLimit: 60,
-        particles: {
-          number: {
-            value: 80,
-            density: {
-              enable: true,
-              value_area: 800,
-            },
-          },
-          color: {
-            value: '#ff2e63',
-          },
-          opacity: {
-            value: {
-              min: 0.3,
-              max: 0.8,
-            },
-            animation: {
-              enable: true,
-              speed: 1,
-              sync: false,
-            },
-          },
-          size: {
-            value: {
-              min: 1,
-              max: 3,
-            },
-          },
-          move: {
-            enable: true,
-            speed: {
-              min: 0.5,
-              max: 2,
-            },
-            direction: 'none',
-            random: false,
-            straight: false,
-            outModes: {
-              default: 'bounce',
-            },
-            attract: {
-              enable: false,
-              rotateX: 600,
-              rotateY: 1200,
-            },
-          },
-          links: {
-            enable: true,
-            distance: 150,
-            color: '#ff7b54',
-            opacity: 0.4,
-            width: 1,
-          },
-        },
-        interactivity: {
-          detectsOn: 'window',
-          events: {
-            onHover: {
-              enable: true,
-              mode: 'repulse',
-              parallax: {
-                enable: false,
-                force: 60,
-                smooth: 10,
-              },
-            },
-            onClick: {
-              enable: true,
-              mode: 'push',
-            },
-            resize: true,
-          },
-          modes: {
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-            push: {
-              quantity: 4,
-            },
-          },
-        },
-      }}
-      style={{
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-      }}
-    />
-  );
+    const particlesLoaded = (container) => {
+        console.log(container);
+    };
+
+    return (
+        <>
+            {init && (
+                <Particles
+                    id="tsparticles"
+                    particlesLoaded={particlesLoaded}
+                    options={{
+                        background: {
+                            color: {
+                                value: "transparent",
+                            },
+                        },
+                        fpsLimit: 120,
+                        interactivity: {
+                            events: {
+                                onClick: {
+                                    enable: true,
+                                    mode: "push",
+                                },
+                                onHover: {
+                                    enable: true,
+                                    mode: "repulse",
+                                },
+                            },
+                            modes: {
+                                push: {
+                                    quantity: 4,
+                                },
+                                repulse: {
+                                    distance: 200,
+                                    duration: 0.4,
+                                },
+                            },
+                        },
+                        particles: {
+                            color: {
+                                value: ["#e91e63", "#00bcd4"], // Pink and Cyan
+                            },
+                            links: {
+                                color: "#ffffff",
+                                distance: 160,
+                                enable: true,
+                                opacity: 0.5,
+                                width: 1,
+                            },
+                            move: {
+                                direction: "none",
+                                enable: true,
+                                outModes: {
+                                    default: "bounce",
+                                },
+                                random: false,
+                                speed: 2,
+                                straight: false,
+                            },
+                            number: {
+                                density: {
+                                    enable: true,
+                                    area: 800,
+                                },
+                                value: 160,
+                            },
+                            opacity: {
+                                value: 0.7,
+                            },
+                            shape: {
+                                type: "circle",
+                            },
+                            size: {
+                                value: { min: 2, max: 6 },
+                            },
+                        },
+                        detectRetina: true,
+                        fullScreen: {
+                            enable: true,
+                            zIndex: -1 // Behind everything
+                        },
+                    }}
+                />
+            )}
+        </>
+    );
 };
 
 export default ParticleBackground;

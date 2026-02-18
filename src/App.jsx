@@ -5,14 +5,20 @@ import Projects from "./components/Projects"
 import Contact from "./components/Contact"
 import Skills from "./components/Skills"
 
-import ParticleBackground from "./components/ParticleBackground"
 import './styles/globals.css'
 import './styles/responsive.css'
+
+
+import ScrollProgress from "./components/ScrollProgress"
+
+import ParticleBackground from "./components/ParticleBackground"
 
 function App() {
   return (
     <>
       <ParticleBackground />
+
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <About />

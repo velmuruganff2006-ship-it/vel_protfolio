@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { navLinkVariants, buttonVariants } from '../animations/variants';
+import MagneticButton from './MagneticButton';
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState('home');
@@ -22,13 +23,25 @@ const Navbar = () => {
   return (
     <nav className="navbar" style={styles.navbar}>
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
+        initial="hidden"
+        animate="visible"
+        transition={{ staggerChildren: 0.1 }}
         style={styles.logo}
       >
-        <span style={{ ...styles.logoText, fontSize: '28px', fontWeight: 'bold' }}>
-          <span className="gradient-text">Alex</span>
+        <span style={{ ...styles.logoText, fontSize: '30px', fontWeight: 'bold' }}>
+          {Array.from("VELMURUGAN A").map((char, index) => (
+            <motion.span
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: -10 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              style={{ display: "inline-block" }}
+              className="gradient-text"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
         </span>
       </motion.div>
 
@@ -41,23 +54,25 @@ const Navbar = () => {
         className="desktop-nav"
       >
         {navItems.map((item, i) => (
-          <motion.a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            custom={i}
-            variants={navLinkVariants}
-            whileHover={{ scale: 1.1, color: '#ff2e63' }}
-            onClick={() => setIsActive(item.toLowerCase())}
-            style={{
-              ...styles.navLink,
-              color:
-                isActive === item.toLowerCase() ? '#ff2e63' : '#e0e0e0',
-              textDecoration:
-                isActive === item.toLowerCase() ? 'underline' : 'none',
-            }}
-          >
-            {item}
-          </motion.a>
+          <MagneticButton key={item} style={{ display: 'inline-block' }}>
+            <motion.a
+              href={`#${item.toLowerCase()}`}
+              custom={i}
+              variants={navLinkVariants}
+              whileHover={{ scale: 1.1, color: '#ff2e63' }}
+              onClick={() => setIsActive(item.toLowerCase())}
+              style={{
+                ...styles.navLink,
+                color:
+                  isActive === item.toLowerCase() ? '#ff2e63' : '#e0e0e0',
+                textDecoration:
+                  isActive === item.toLowerCase() ? 'underline' : 'none',
+                display: 'inline-block',
+              }}
+            >
+              {item}
+            </motion.a>
+          </MagneticButton>
         ))}
       </motion.div>
 

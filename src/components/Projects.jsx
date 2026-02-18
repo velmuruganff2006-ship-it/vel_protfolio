@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { containerVariants, cardVariants } from "../animations/variants";
 
-function Projects(){
+function Projects() {
   const projectsData = [
     {
       id: 1,
@@ -80,11 +80,11 @@ function Projects(){
               whileHover={{ y: -15, boxShadow: "0 20px 40px rgba(255, 46, 99, 0.3)" }}
             >
               <div style={styles.projectImage}>{project.image}</div>
-              
+
               <h3 style={styles.projectTitle}>{project.title}</h3>
-              
+
               <p style={styles.projectDescription}>{project.description}</p>
-              
+
               <div style={styles.techStack}>
                 {project.tech.map((tech) => (
                   <span key={tech} style={styles.techTag}>{tech}</span>
@@ -111,7 +111,6 @@ const styles = {
   section: {
     minHeight: "100vh",
     padding: "100px 50px",
-    background: "linear-gradient(135deg, #0a0e27 0%, #1a1633 100%)",
     display: "flex",
     alignItems: "center",
   },

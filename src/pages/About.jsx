@@ -2,8 +2,31 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animations/variants';
 
+const PROFILE_IMAGE_STORAGE_KEY = 'portfolio-profile-image';
+
 const About = () => {
-  const skills = ['React', 'JavaScript', 'Node.js', 'MongoDB', 'Three.js', 'Framer Motion'];
+  const skills = ['HTML', 'CSS', 'JavaScript', 'React'];
+  const [profileImage, setProfileImage] = React.useState(() => {
+    if (typeof window === 'undefined') {
+      return '/WhatsApp Image 2026-02-09 at 9.29.04 PM.jpeg';
+    }
+
+    const storedImage = window.localStorage.getItem(PROFILE_IMAGE_STORAGE_KEY);
+    return storedImage || '/WhatsApp Image 2026-02-09 at 9.29.04 PM.jpeg';
+  });
+
+  React.useEffect(() => {
+    const syncProfileImage = () => {
+      const storedImage = window.localStorage.getItem(PROFILE_IMAGE_STORAGE_KEY);
+      setProfileImage(storedImage);
+    };
+
+    window.addEventListener('profile-image-updated', syncProfileImage);
+
+    return () => {
+      window.removeEventListener('profile-image-updated', syncProfileImage);
+    };
+  }, []);
 
   return (
     <section id="about" style={styles.about}>
@@ -22,32 +45,46 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           style={styles.content}
         >
-          <motion.div variants={itemVariants} style={styles.textContent}>
-            <p>
-              I'm a passionate web designer and developer with a keen eye for creating stunning, 
-              interactive digital experiences. With expertise in modern technologies like React, Three.js, 
-              and Framer Motion, I bring ideas to life with smooth animations and beautiful UI/UX.
-            </p>
-            <p style={{ marginTop: '20px' }}>
-              My journey in web development has been focused on combining creativity with technical excellence, 
-              ensuring every project is both visually appealing and functionally robust.
-            </p>
+          <motion.div variants={itemVariants} style={styles.profileCard} className="glassmorphism">
+            <div style={styles.profileFrame}>
+              {profileImage ? (
+                <img src={profileImage} alt="Velmurugan profile" style={styles.profileImage} />
+              ) : (
+                <div style={styles.profileFallback}>VA</div>
+              )}
+            </div>
+            <h3 style={styles.profileName}>VELMURUGAN A</h3>
+            <p style={styles.profileRole}>Frontend Developer</p>
           </motion.div>
 
-          <motion.div variants={itemVariants} style={styles.skillsBox} className="glassmorphism">
-            <h3>Tech Stack</h3>
-            <div style={styles.skillsList}>
-              {skills.map((skill, i) => (
-                <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  style={styles.skillTag}
-                >
-                  {skill}
-                </motion.div>
-              ))}
+          <motion.div variants={itemVariants} style={styles.detailsColumn}>
+            <div style={styles.textContent}>
+              <p>
+                I'm a passionate web designer and developer with a keen eye for creating stunning,
+                interactive digital experiences. With expertise in modern technologies like React, Three.js,
+                and Framer Motion, I bring ideas to life with smooth animations and beautiful UI/UX.
+              </p>
+              <p style={{ marginTop: '20px' }}>
+                My journey in web development has been focused on combining creativity with technical excellence,
+                ensuring every project is both visually appealing and functionally robust.
+              </p>
+            </div>
+
+            <div style={styles.skillsBox} className="glassmorphism">
+              <h3>Tech Stack</h3>
+              <div style={styles.skillsList}>
+                {skills.map((skill, i) => (
+                  <motion.div
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                    style={styles.skillTag}
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </motion.div>
@@ -60,7 +97,6 @@ const styles = {
   about: {
     minHeight: '100vh',
     padding: '100px 50px',
-    background: 'linear-gradient(135deg, #0a0e27 0%, #1a1633 100%)',
     display: 'flex',
     alignItems: 'center',
   },
@@ -76,9 +112,56 @@ const styles = {
   },
   content: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
     gap: '50px',
+    alignItems: 'start',
+  },
+  profileCard: {
+    padding: '30px',
+    borderRadius: '20px',
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
+    textAlign: 'center',
+  },
+  profileFrame: {
+    width: '220px',
+    height: '220px',
+    borderRadius: '50%',
+    overflow: 'hidden',
+    border: '4px solid rgba(255, 46, 99, 0.65)',
+    boxShadow: '0 0 24px rgba(255, 46, 99, 0.45)',
+    marginBottom: '18px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'linear-gradient(135deg, rgba(255, 46, 99, 0.2), rgba(255, 123, 84, 0.2))',
+  },
+  profileImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+  profileFallback: {
+    fontSize: '58px',
+    fontWeight: '700',
+    color: '#ff7b54',
+    letterSpacing: '0.04em',
+  },
+  profileName: {
+    margin: 0,
+    fontSize: '22px',
+    color: '#ffffff',
+  },
+  profileRole: {
+    marginTop: '10px',
+    marginBottom: 0,
+    color: '#b0b0b0',
+  },
+  detailsColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
   },
   textContent: {
     fontSize: '16px',
