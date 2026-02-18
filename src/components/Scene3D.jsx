@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-const RotatingIcon = ({ position, color, icon }) => {
+const RotatingIcon = ({ position, color }) => {
   const meshRef = useRef();
 
   useFrame(() => {
@@ -39,7 +39,6 @@ const Scene3D = () => {
           key={i}
           position={icon.position}
           color={icon.color}
-          icon={icon.label}
         />
       ))}
 

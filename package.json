@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
+    "firebase": "^12.4.0",
     "framer-motion": "^12.34.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-easy-crop": "^5.5.3",
     "react-router-dom": "^7.13.0",
     "react-three-fiber": "^6.0.13",
     "react-tsparticles": "^2.12.2",

@@ -7,7 +7,7 @@ const ParticleBackground = () => {
     await loadFull(main);
   };
 
-  const particlesLoaded = (container) => {
+  const particlesLoaded = (_container) => {
     // Optional: do something with the container
   };
 

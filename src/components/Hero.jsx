@@ -70,7 +70,7 @@ const Hero = () => {
           style={styles.socialIcons}
         >
           {['LinkedIn', 'GitHub', 'Instagram', 'Twitter', 'YouTube'].map(
-            (icon, i) => (
+            (icon) => (
               <motion.a
                 key={icon}
                 href="#"
